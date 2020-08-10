@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "name": "AuctionKira",
+  "description": "拍賣網站小幫手",
+  "version": "1.0.0",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "page_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://*.myacg.com.tw/*"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.myacg.com.tw/*"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "js": [
+        "jquery.min.js",
+        "execute.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}
