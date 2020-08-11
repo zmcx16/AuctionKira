@@ -24,20 +24,20 @@
   ],
   "externally_connectable": {
     "matches": [
-      "*://*.myacg.com.tw/*"
+      "*://*.myacg.com.tw/goods_list.php*"
     ]
   },
   "content_scripts": [
     {
       "matches": [
-        "*://*.myacg.com.tw/*"
+        "*://*.myacg.com.tw/goods_list.php*"
       ],
       "css": [
         "style.css"
       ],
       "js": [
         "jquery.min.js",
-		    "myacg.js",
+		"myacg.js",
         "execute.js"
       ],
       "run_at": "document_end"
