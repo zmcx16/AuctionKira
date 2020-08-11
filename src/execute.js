@@ -22,8 +22,17 @@ window.onload = function () {
   }), 1000);
 };
 
+var helper;
+
 // local function 
 function init() {
+
+  if (location.host.indexOf('myacg')!==-1){
+    helper = myacg_helper;
+    helper.init();
+  }
+
+  helper.doShowAll();
 
 }
 
