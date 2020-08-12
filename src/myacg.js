@@ -46,7 +46,7 @@ var myacg_helper = (function () {
     }
 
     var now_count = $('#Goods_list_block li').length;
-    $('#loading-panel-box').show();
+    g_helper.enableLoadingAnimate();
 
     $.ajax({
       url: 'goods_list_load_html_api.php',
@@ -103,7 +103,7 @@ var myacg_helper = (function () {
             $('.search_no_data').show();
           }
 
-          $('#loading-panel-box').hide();
+          g_helper.disableLoadingAnimate();
         }
       })
   }

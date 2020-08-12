@@ -2,11 +2,14 @@ var storage_data = { 'filter_title': '' };
 var text_dict = {
 };
 
-var ui_loading = false;
+var helper;
 
 // popup message
 const onMessage = (message) => {
   switch (message.action) {
+    case 'ShowAll':
+      showAll();
+      break;
     default:
       break;
   }
@@ -15,6 +18,12 @@ const onMessage = (message) => {
 chrome.runtime.onMessage.addListener(onMessage);
 chrome.runtime.sendMessage({ "message": "activate_icon" });
 
+// action function
+const showAll = () => {
+  helper.doShowAll();
+};
+
+
 // Dom event
 window.onload = function () {
   window.setTimeout((() => {
@@ -22,20 +31,13 @@ window.onload = function () {
   }), 1000);
 };
 
-var helper;
-
 // local function 
 function init() {
+
+  g_helper.init();
 
   if (location.host.indexOf('myacg')!==-1){
     helper = myacg_helper;
     helper.init();
   }
-
-  helper.doShowAll();
-
-}
-
-function initWithDom() {
-
 }

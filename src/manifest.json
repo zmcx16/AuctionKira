@@ -37,7 +37,8 @@
       ],
       "js": [
         "jquery.min.js",
-		"myacg.js",
+		    "common.js",
+		    "myacg.js",
         "execute.js"
       ],
       "run_at": "document_end"
