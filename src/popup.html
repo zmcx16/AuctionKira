@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" style="width:250px;">
+<html xmlns="http://www.w3.org/1999/xhtml" style="width:450px;">
   <head>
     <title>AuctionKira</title>
     <meta charset="UTF-8">
@@ -10,15 +10,33 @@
   <body id="body">
     <div class="container">
       <div class="control-pannel">
-        <button id="show-all-btn">顯示所有商品</button>
-      </div>
-      <div class="relate-links">
-        <div class="relate-links-title">相關連結:</div>
-        <a class="relate-link" target="_blank" href="https://github.com/zmcx16/AuctionKira">AuctionKira Github</a>
-        <a class="relate-link" target="_blank" href="https://project.zmcx16.moe/">zmcx16's Side Projects</a>
-        <a class="relate-link" target="_blank" href="https://blog.zmcx16.moe/">zmcx16's Blog</a>
+        <div class="filter-title">
+          <span class="filter-text">去除關鍵字: </span>
+          <input type="text" id="filter-title-input" name="filter-title-input" placeholder="關鍵字1;關鍵字2...">
+        </div>
+        <div class="filter-seller">
+          <span class="filter-text">去除賣家: </span>
+          <input type="text" id="filter-seller-input" name="filter-seller-input" placeholder="賣家帳號1;賣家帳號2...">
+        </div>
+        <div class="filter-control">
+          <div class="check-ads">
+            <input type="checkbox" id="filter-ads" name="filter-ads">
+            <label for="filter-ads">去除廣告</label>
+          </div>
+          <button id="do-filter-btn" class="click-btn">進階搜尋結果</button>
+        </div>
+        <div class="misc-control">
+          <button id="import-setting-btn" class="click-btn">匯入設定</button>
+          <button id="export-setting-btn" class="click-btn">匯出設定</button>
+          <button id="show-all-btn" class="click-btn">顯示所有商品</button>
+        </div>
       </div>
     </div>
+    <footer class="relate-links">
+      <div class="relate-link"><a target="_blank" href="https://github.com/zmcx16/AuctionKira">AuctionKira Github</a></div>
+      <div class="relate-link"><a target="_blank" href="https://project.zmcx16.moe/">zmcx16's Side Projects</a></div>
+      <div class="relate-link"><a target="_blank" href="https://blog.zmcx16.moe/">zmcx16's Blog</a></div>
+    </footer>
     <script src="./popup.js"></script>
   </body>
 </html>

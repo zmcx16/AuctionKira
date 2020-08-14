@@ -1,41 +1,83 @@
 body{
-    background: white;
-    font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
-    border: 1px groove #ddd;
-    background-color: floralwhite;
+    color: #252525;
+    font-family: '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"';
     display: block;
+    background: mintcream;
+    margin: 0;
+    line-height: 20px;
 }
 
 span{
-	vertical-align: middle;
+    vertical-align: middle;
+}
+
+input[type=checkbox]{
+    position: relative;
+    top: 2px;
+}
+
+.click-btn {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #999, -1px -1px 1px #CCC;
+    background: #66DDAA;
+    line-height: 20px;
+}
+
+.click-btn:hover {
+    background-color: #58bc9b;
+}
+
+.click-btn:active {
+    box-shadow: -1px -1px 1px #999;
 }
 
 .container{
 	margin: 15px;
 }
 
-.clear-data{
-	display: inline-block;
+.control-pannel{
+    margin-top: 25px;
 }
 
-#clear-data-input{
-	width: 40px;
-    margin: 0 10px;
+.filter-title, .filter-seller{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 20px;
+    padding-right: 10px;
+    margin-bottom: 20px;
 }
 
-#clear-data-btn{
-    margin-left: 5px;
+.filter-control{
+    display: grid;
+    grid-template-columns: 80px 310px;
+    gap: 20px;
+}
+
+.misc-control{
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    margin: 30px 10px 5px 10px;
 }
 
 .relate-links{
-    margin: 20px 0px;
-}
-
-.relate-links-title{
-    padding: 10px 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    background: snow;
 }
 
 .relate-link{
-    padding: 5px 10px;
-	display: block;
+    padding: 5px 0px;
+    color: #0081f2;
 }
