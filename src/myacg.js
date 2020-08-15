@@ -12,6 +12,8 @@ var myacg_helper = (function () {
   var demo = '';
   var is_run = true;
 
+  var pop_setting = {};
+
   var init = function () {
     // &show=list&type=0&sort=1
     let searchParams = new URLSearchParams(window.location.search)
@@ -28,14 +30,55 @@ var myacg_helper = (function () {
 
   var doAdvSearch = function (setting) {
 
-    if (setting['show-all']) {
-      doShowAll(setting, null);
+    pop_setting = setting;
+
+    if (pop_setting['show-all']) {
+      doShowAll(doFilter);
+    }
+    else{
+      doFilter();
     }
   }
 
   // local function
-  function doShowAll(setting, callback) {
+  function doFilter(){
+
+    var keywords = {title: [], seller: [], ads: []};
+    if (pop_setting['filter-title']) {
+      keywords.title = pop_setting['filter-title'].split(';');
+    }
+    if (pop_setting['filter-seller']) {
+      keywords.seller = pop_setting['filter-seller'].split(';');
+    }
+
+    $('#Goods_list_block').children().each((index, item)=> {
+      let title_hidden = false;
+      let seller_hidden = false;
+      let title = show === 'image' ? item.children[1].innerText : item.children[1].children[0].innerText;
+      let seller = show === 'image' ? null : item.children[1].children[1].innerText; // image mode no seller info
+      if (title && keywords.title && keywords.title.find(key => title.includes(key))){
+        title_hidden = true;
+      } else{
+        title_hidden = false;
+      }
+      if (seller && keywords.seller && keywords.seller.find(key => seller.includes(key))) {
+        seller_hidden = true;
+      } else {
+        seller_hidden = false;
+      }
+
+      if (title_hidden || seller_hidden){
+        $(item).css('display', 'none');
+      } else {
+        $(item).css('display', 'block');
+      }
+    });
+
+  }
+
+  function doShowAll(callback) {
     if (!is_run) {
+      callback();
       return false;
     }
 
@@ -103,7 +146,7 @@ var myacg_helper = (function () {
           }
           $('#Goods_list_block').append(content);
 
-          doShowAll(setting, callback);
+          doShowAll(callback);
         }
         else {
           is_run = false;
