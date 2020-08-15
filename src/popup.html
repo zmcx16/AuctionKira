@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="popup.css">
   </head>
-
+  <script src="./jquery.min.js"></script>
+  <script src="./popup.js"></script>
   <body id="body">
     <div class="container">
       <div class="control-pannel">
@@ -20,15 +21,26 @@
         </div>
         <div class="filter-control">
           <div class="check-ads">
-            <input type="checkbox" id="filter-ads" name="filter-ads">
+            <input type="checkbox" class="checkbox" id="filter-ads" name="filter-ads">
             <label for="filter-ads">去除廣告</label>
           </div>
-          <button id="do-filter-btn" class="click-btn">進階搜尋結果</button>
+          <div class="check-ads">
+            <input type="checkbox" class="checkbox" id="show-all" name="show-all">
+            <label for="show-all">顯示所有商品</label>
+          </div>
+          <div></div>
+          <button id="adv-search-btn" class="click-btn">進階搜尋結果</button>
         </div>
         <div class="misc-control">
+          <div class="auto-run-block">
+            <label class="switch">
+              <input type="checkbox" id="auto-run">
+              <span class="slider round"></span>
+            </label>
+            <label for="auto-run" class="switch-text">自動執行</label>
+          </div>
           <button id="import-setting-btn" class="click-btn">匯入設定</button>
           <button id="export-setting-btn" class="click-btn">匯出設定</button>
-          <button id="show-all-btn" class="click-btn">顯示所有商品</button>
         </div>
       </div>
     </div>
@@ -37,6 +49,5 @@
       <div class="relate-link"><a target="_blank" href="https://project.zmcx16.moe/">zmcx16's Side Projects</a></div>
       <div class="relate-link"><a target="_blank" href="https://blog.zmcx16.moe/">zmcx16's Blog</a></div>
     </footer>
-    <script src="./popup.js"></script>
   </body>
 </html>

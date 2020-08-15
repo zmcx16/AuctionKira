@@ -26,7 +26,15 @@ var myacg_helper = (function () {
     }
   }
 
-  var doShowAll = function() {
+  var doAdvSearch = function (setting) {
+
+    if (setting['show-all']) {
+      doShowAll(setting, null);
+    }
+  }
+
+  // local function
+  function doShowAll(setting, callback) {
     if (!is_run) {
       return false;
     }
@@ -95,13 +103,16 @@ var myacg_helper = (function () {
           }
           $('#Goods_list_block').append(content);
 
-          doShowAll();
+          doShowAll(setting, callback);
         }
         else {
           is_run = false;
           if ($('#Goods_list_block li').length == 0) {
             $('.search_no_data').show();
           }
+
+          if (callback)
+            callback();
 
           g_helper.disableLoadingAnimate();
         }
@@ -110,7 +121,7 @@ var myacg_helper = (function () {
 
   return {
     init,
-    doShowAll
+    doAdvSearch
   }
 })()
 
