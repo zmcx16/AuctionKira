@@ -24,13 +24,15 @@
   ],
   "externally_connectable": {
     "matches": [
-      "*://*.myacg.com.tw/goods_list.php*"
+      "*://*.myacg.com.tw/goods_list.php*",
+	    "*://find.ruten.com.tw/*"
     ]
   },
   "content_scripts": [
     {
       "matches": [
-        "*://*.myacg.com.tw/goods_list.php*"
+        "*://*.myacg.com.tw/goods_list.php*",
+		    "*://find.ruten.com.tw/*"
       ],
       "css": [
         "style.css"
@@ -38,7 +40,8 @@
       "js": [
         "jquery.min.js",
 		    "common.js",
-		    "myacg.js",
+        "myacg.js",
+        "ruten.js",
         "execute.js"
       ],
       "run_at": "document_end"

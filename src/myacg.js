@@ -43,7 +43,7 @@ var myacg_helper = (function () {
   // local function
   function doFilter(){
 
-    var keywords = {title: [], seller: [], ads: []};
+    var keywords = {title: [], seller: []};
     if (pop_setting['filter-title']) {
       keywords.title = pop_setting['filter-title'].split(';');
     }

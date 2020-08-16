@@ -54,8 +54,10 @@ function init() {
 
   if (location.host.indexOf('myacg')!==-1){
     helper = myacg_helper;
-    helper.init();
+  } else if (location.host.indexOf('ruten') !== -1) {
+    helper = ruten_helper;
   }
+  helper.init();
 
   if (storage_data['auto-run']){
     helper.doAdvSearch(storage_data);
