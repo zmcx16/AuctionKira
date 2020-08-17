@@ -21,11 +21,18 @@ var ruten_helper = (function () {
       if (iframe_content.length > 0){
         $(find_class + ' .content')[0].innerHTML += ($(iframe_content).children('.content')[0].innerHTML);
         if (now_page < end_page){
+          now_page += 1;
+          g_helper.setProgressBar(now_page * 100 / end_page, true);
           doShowAll();
         } else {
+          g_helper.setProgressBar(100, false);
+          // hidden page button
+          $('#ProdTopPgContainer').hide();
+          $('.footer .pagination').hide();
           console.log('show all completed.');
         }
       }else{
+        g_helper.setProgressBar(0, false);
         console.log('no need add item.');
       }
     });
@@ -36,9 +43,11 @@ var ruten_helper = (function () {
     pop_setting = setting;
 
     if (pop_setting['show-all']) {
+      console.log('run doShowAll');
       doShowAll();
     }
     else {
+      console.log('run doFilter');
       doFilter();
     }
   }
@@ -62,10 +71,10 @@ var ruten_helper = (function () {
 
     if (now_page === -1 || end_page === -1){
       let page_info = $('#ProdTopPgContainer')[0].innerText.split('\n');
-      now_page = parseInt(page_info[0]);
+      now_page = parseInt(page_info[0]) + 1;  // load next page
       end_page = parseInt(page_info[1]);
+      g_helper.setProgressBar(0, true);
     }
-    now_page += 1;
 
     var url = location.href.replace(/&?p=([^&]$|[^&]*)/i, "");
     url += "&p=" + now_page;

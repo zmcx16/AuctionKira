@@ -33,9 +33,11 @@ var myacg_helper = (function () {
     pop_setting = setting;
 
     if (pop_setting['show-all']) {
+      console.log('run doShowAll');
       doShowAll(doFilter);
     }
     else{
+      console.log('run doFilter');
       doFilter();
     }
   }
