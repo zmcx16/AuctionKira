@@ -58,12 +58,12 @@ var myacg_helper = (function () {
       let seller_hidden = false;
       let title = show === 'image' ? item.children[1].innerText : item.children[1].children[0].innerText;
       let seller = show === 'image' ? null : item.children[1].children[1].innerText; // image mode no seller info
-      if (title && keywords.title && keywords.title.find(key => title.includes(key))){
+      if (keywords.title && title && keywords.title.find(key => title.includes(key))){
         title_hidden = true;
       } else{
         title_hidden = false;
       }
-      if (seller && keywords.seller && keywords.seller.find(key => seller.includes(key))) {
+      if (keywords.seller && seller && keywords.seller.find(key => seller.includes(key))) {
         seller_hidden = true;
       } else {
         seller_hidden = false;
