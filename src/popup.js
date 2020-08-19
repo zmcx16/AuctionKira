@@ -1,4 +1,4 @@
-var storage_data = { 'filter-title': '', 'filter-seller': '', 'filter-ads': true, 'show-all': false, 'auto-run': false };
+var storage_data = { 'filter-title': '', 'filter-seller': '', 'filter-ads': true, 'preload-page': 0, 'auto-run': false };
 
 var getSelectedTab = (tab) => {
 
@@ -8,11 +8,6 @@ var getSelectedTab = (tab) => {
   var sendMessage = (messageObj) => chrome.tabs.sendMessage(tabId, messageObj);
 
   $('#filter-ads').change(() => {
-    loadDomInStorMemory();
-    saveStorage(null);
-  });
-
-  $('#show-all').change(() => {
     loadDomInStorMemory();
     saveStorage(null);
   });
@@ -57,23 +52,22 @@ function loadDomInStorMemory(){
   storage_data['filter-title'] = $('#filter-title-input').val();
   storage_data['filter-seller'] = $('#filter-seller-input').val();
   storage_data['filter-ads'] = $('#filter-ads').is(":checked");
-  storage_data['show-all'] = $('#show-all').is(":checked");
+  storage_data['preload-page'] = parseInt($('#preload-page-input').val());
   storage_data['auto-run'] = $('#auto-run').is(":checked");
 }
 
 function setStorInDom(){
   $('#filter-title-input').val(storage_data['filter-title'])
   $('#filter-seller-input').val(storage_data['filter-seller'])
+
   if (storage_data['filter-ads']) {
     $('#filter-ads').prop('checked', true);
   } else {
     $('#filter-ads').prop('checked', false);
   }
-  if (storage_data['show-all']) {
-    $('#show-all').prop('checked', true);
-  } else {
-    $('#show-all').prop('checked', false);
-  }
+
+  $('#preload-page-input').val(storage_data['preload-page'])
+
   if (storage_data['auto-run']) {
     $('#auto-run').prop('checked', true);
   } else {
@@ -104,8 +98,8 @@ function loadStorage() {
       if (!('filter-ads' in storage_data)) {
         storage_data['filter-ads'] = true;
       }
-      if (!('show-all' in storage_data)) {
-        storage_data['show-all'] = true;
+      if (!('preload-page' in storage_data)) {
+        storage_data['preload-page'] = 0;
       }
       if (!('auto-run' in storage_data)) {
         storage_data['auto-run'] = true;

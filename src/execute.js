@@ -1,4 +1,4 @@
-var storage_data = { 'filter-title': '', 'filter-seller': '', 'filter-ads': true, 'show-all': false, 'auto-run': false };
+var storage_data = { 'filter-title': '', 'filter-seller': '', 'filter-ads': true, 'preload-page': 0, 'auto-run': false };
 var helper;
 
 // popup message
@@ -28,8 +28,8 @@ function loadStorage(callback) {
       if (!('filter-ads' in storage_data)) {
         storage_data['filter-ads'] = true;
       }
-      if (!('show-all' in storage_data)) {
-        storage_data['show-all'] = true;
+      if (!('preload-page' in storage_data)) {
+        storage_data['preload-page'] = 0;
       }
       if (!('auto-run' in storage_data)) {
         storage_data['auto-run'] = true;

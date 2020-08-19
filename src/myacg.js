@@ -32,9 +32,9 @@ var myacg_helper = (function () {
 
     pop_setting = setting;
 
-    if (pop_setting['show-all']) {
-      console.log('run doShowAll');
-      doShowAll(doFilter);
+    if (pop_setting['preload-page'] > 0) {
+      console.log('run doPreloadPage');
+      doPreloadPage(doFilter, pop_setting['preload-page']);
     }
     else{
       console.log('run doFilter');
@@ -78,9 +78,10 @@ var myacg_helper = (function () {
 
   }
 
-  function doShowAll(callback) {
-    if (!is_run) {
+  function doPreloadPage(callback, load_page) {
+    if (!is_run || load_page <= 0) {
       callback();
+      g_helper.disableLoadingAnimate();
       return false;
     }
 
@@ -148,7 +149,7 @@ var myacg_helper = (function () {
           }
           $('#Goods_list_block').append(content);
 
-          doShowAll(callback);
+          doPreloadPage(callback, load_page-1);
         }
         else {
           is_run = false;

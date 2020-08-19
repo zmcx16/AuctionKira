@@ -41,3 +41,20 @@
   z-index: 120;
   opacity: 0.9;
 }
+
+#ak-current-page{
+  position: fixed;
+  top: 25%;
+  z-index: 10000;
+  right: 20px;
+  border: 2px solid darkturquoise;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 20px;
+  padding: 5px;
+  background-color: mintcream;
+}
+
+.font-small{
+  font-size: small;
+}
