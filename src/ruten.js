@@ -21,7 +21,9 @@ var ruten_helper = (function () {
           $(find_class + ' .content')[0].innerHTML += ($(iframe_content).children('.content')[0].innerHTML);
           if (now_page < end_page) {
             now_page += 1;
-            g_helper.setProgressBar(now_page * 100 / end_page, true);
+            let now_p = now_page - (end_page - preload_page);
+            let end_p = preload_page ;
+            g_helper.setProgressBar(now_p * 100 / end_p, true);
             doPreloadPage();
           } else {
             g_helper.setProgressBar(100, false);
@@ -60,7 +62,7 @@ var ruten_helper = (function () {
         now_page = now_page + 1;
       }
 
-      end_page = Math.min(start_page + preload_page, parseInt(page_info[1]));
+      end_page = Math.min(now_page -1 + preload_page, parseInt(page_info[1]));
       if (now_page > end_page) {
         console.log('no need add item, run doFilter().');
         doFilter();
@@ -85,9 +87,9 @@ var ruten_helper = (function () {
     let next_url = url_base + "&p=" + next_page;
 
     $('#ak-current-page')[0].innerHTML = 
-      '<a href="' + previous_url + '"><span class="font-small">上一頁(' + previous_page + ')</span></a>' + 
+      '<a href="' + previous_url + '"><span class="font-small">上一頁(' + previous_page + "~" + (previous_page + preload_page) + ')</span></a>' + 
       '<div class="font-small">目前載入(' + start_page + "~" +  now_page + ')</div>' + 
-      '<a href="' + next_url + '"><span class="font-small">下一頁(' + next_page + ')</span></a>';
+    '<a href="' + next_url + '"><span class="font-small">下一頁(' + next_page + "~" + (next_page + preload_page) + ')</span></a>';
     $('#ak-current-page').show();
 
   }

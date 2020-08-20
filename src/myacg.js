@@ -13,6 +13,7 @@ var myacg_helper = (function () {
   var is_run = true;
 
   var pop_setting = {};
+  var preload_page = -1; 
 
   var init = function () {
     // &show=list&type=0&sort=1
@@ -34,7 +35,8 @@ var myacg_helper = (function () {
 
     if (pop_setting['preload-page'] > 0) {
       console.log('run doPreloadPage');
-      doPreloadPage(doFilter, pop_setting['preload-page']);
+      preload_page = pop_setting['preload-page'];
+      doPreloadPage(doFilter, preload_page);
     }
     else{
       console.log('run doFilter');
@@ -81,7 +83,7 @@ var myacg_helper = (function () {
   function doPreloadPage(callback, load_page) {
     if (!is_run || load_page <= 0) {
       callback();
-      g_helper.disableLoadingAnimate();
+      g_helper.setProgressBar(0, false);
       return false;
     }
 
@@ -100,7 +102,7 @@ var myacg_helper = (function () {
     }
 
     var now_count = $('#Goods_list_block li').length;
-    g_helper.enableLoadingAnimate();
+    g_helper.setProgressBar((preload_page - load_page) * 100 / preload_page, true);
 
     $.ajax({
       url: 'goods_list_load_html_api.php',
@@ -160,7 +162,7 @@ var myacg_helper = (function () {
           if (callback)
             callback();
 
-          g_helper.disableLoadingAnimate();
+          g_helper.setProgressBar(100, false);
         }
       })
   }
