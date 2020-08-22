@@ -6,6 +6,12 @@ var ruten_helper = (function () {
   var end_page = -1;
   var preload_page = 0;
   var pop_setting = {};
+  var bFilterRunning = false;
+
+  // not preload mode used
+  var bDomChanged = false;
+  var bDomDelay = 1000;
+
 
   var init = function () {
     // search_form s_grid / search_form s_list
@@ -28,8 +34,8 @@ var ruten_helper = (function () {
           } else {
             g_helper.setProgressBar(100, false);
             // hidden page button
-            // $('#ProdTopPgContainer').hide();
-            // $('.footer .pagination').hide();
+            $('#ProdTopPgContainer').hide();
+            $('.footer .pagination').hide();
             setCurrentPage();
             console.log(start_page);
             console.log(end_page);
@@ -43,6 +49,27 @@ var ruten_helper = (function () {
         }
       }
     });
+
+    // dom changed
+    var check_dom = () => {
+      doFilter();
+      if (bDomChanged) {
+        bDomChanged = false;
+        setTimeout(check_dom, bDomDelay);
+      }
+    };
+
+    $('body').on('DOMSubtreeModified', ".search_form", function () {
+      // only run if preload page is disabled (=0)
+      if (preload_page === 0){
+        if (!bFilterRunning){       
+          setTimeout(check_dom, bDomDelay);
+        }else{
+          bDomChanged = true;
+        }
+      }
+    });
+
   }
 
   var doAdvSearch = function (setting) {
@@ -104,6 +131,7 @@ var ruten_helper = (function () {
   }
 
   function doFilter() {
+    bFilterRunning = true;
 
     var keywords = { title: [], seller: [], ads: false };
     if (pop_setting['filter-title']) {
@@ -199,6 +227,8 @@ var ruten_helper = (function () {
 
       }); 
     });
+
+    bFilterRunning = false;
   }
 
   function doPreloadPage() {

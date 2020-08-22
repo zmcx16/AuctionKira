@@ -49,7 +49,8 @@ window.onload = function () {
 
 // local function 
 function init() {
-
+  
+  console.log('do init()');
   g_helper.init();
 
   if (location.host.indexOf('myacg')!==-1){
