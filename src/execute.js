@@ -44,7 +44,7 @@ function loadStorage(callback) {
 window.onload = function () {
   window.setTimeout((() => {
     loadStorage(init);
-  }), 1000);
+  }), 300);
 };
 
 // local function 

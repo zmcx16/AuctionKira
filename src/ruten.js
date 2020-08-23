@@ -5,6 +5,7 @@ var ruten_helper = (function () {
   var now_page = -1;
   var end_page = -1;
   var preload_page = 0;
+  var preload_completed = false;
   var pop_setting = {};
   var bFilterRunning = false;
 
@@ -34,12 +35,13 @@ var ruten_helper = (function () {
           } else {
             g_helper.setProgressBar(100, false);
             // hidden page button
-            $('#ProdTopPgContainer').hide();
-            $('.footer .pagination').hide();
+            //$('#ProdTopPgContainer').hide();
+            //$('.footer .pagination').hide();
             setCurrentPage();
             console.log(start_page);
             console.log(end_page);
             console.log('doPreloadPage completed, run doFilter()');
+            preload_completed = true;
             doFilter();
           }
         } else {
@@ -69,7 +71,6 @@ var ruten_helper = (function () {
         }
       }
     });
-
   }
 
   var doAdvSearch = function (setting) {
@@ -90,7 +91,7 @@ var ruten_helper = (function () {
       }
 
       end_page = Math.min(now_page -1 + preload_page, parseInt(page_info[1]));
-      if (now_page > end_page) {
+      if (now_page > end_page || preload_completed) {
         console.log('no need add item, run doFilter().');
         doFilter();
       } else {
@@ -107,6 +108,10 @@ var ruten_helper = (function () {
   // local function
   function setCurrentPage(){
 
+    let page_info = $('#ProdTopPgContainer')[0].innerText.split('\n');
+    let c_page = parseInt(page_info[0]);
+    let l_page = parseInt(page_info[1]);
+
     let url_base = location.href.replace(/&?p=([^&]$|[^&]*)/i, "");
     let previous_page = Math.max(1, start_page - preload_page - 1);
     let previous_url = url_base + "&p=" + previous_page;
@@ -114,9 +119,9 @@ var ruten_helper = (function () {
     let next_url = url_base + "&p=" + next_page;
 
     $('#ak-current-page')[0].innerHTML = 
-      '<a href="' + previous_url + '"><span class="font-small">上一頁(' + previous_page + "~" + (previous_page + preload_page) + ')</span></a>' + 
+      (c_page === 1 ? '': '<a href="' + previous_url + '"><span class="font-small">上一頁(' + previous_page + "~" + (previous_page + preload_page) + ')</span></a>') + 
       '<div class="font-small">目前載入(' + start_page + "~" +  now_page + ')</div>' + 
-    '<a href="' + next_url + '"><span class="font-small">下一頁(' + next_page + "~" + (next_page + preload_page) + ')</span></a>';
+      (parseInt(now_page) >= l_page ? '' : '<a href="' + next_url + '"><span class="font-small">下一頁(' + next_page + "~" + (next_page + preload_page) + ')</span></a>');
     $('#ak-current-page').show();
 
   }
