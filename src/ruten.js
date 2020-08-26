@@ -1,6 +1,6 @@
 var ruten_helper = (function () {
 
-  var style = 'image'
+  var style = 'image';
   var start_page = -1;
   var now_page = -1;
   var end_page = -1;
@@ -103,7 +103,7 @@ var ruten_helper = (function () {
       console.log('run doFilter');
       doFilter();
     }
-  }
+  };
 
   // local function
   function setCurrentPage(){

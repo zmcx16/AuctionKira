@@ -43,7 +43,7 @@ function getCmdArgs(){
   var cmd_args = {
     action: 'AdvSearch',
     data: storage_data
-  }
+  };
 
   return cmd_args;
 }
@@ -66,7 +66,7 @@ function setStorInDom(){
     $('#filter-ads').prop('checked', false);
   }
 
-  $('#preload-page-input').val(storage_data['preload-page'])
+  $('#preload-page-input').val(storage_data['preload-page']);
 
   if (storage_data['auto-run']) {
     $('#auto-run').prop('checked', true);

@@ -27,7 +27,7 @@ var myacg_helper = (function () {
     if (searchParams.has('sort')) {
       sort = searchParams.get('sort');
     }
-  }
+  };
 
   var doAdvSearch = function (setting) {
 
@@ -42,7 +42,7 @@ var myacg_helper = (function () {
       console.log('run doFilter');
       doFilter();
     }
-  }
+  };
 
   // local function
   function doFilter(){

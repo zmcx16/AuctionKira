@@ -40,6 +40,6 @@ var g_helper = (function () {
     disableLoadingAnimate,
     setProgressBar
   }
-})()
+})();
 
 

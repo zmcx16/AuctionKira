@@ -1,4 +1,4 @@
-body{
+body {
     color: #252525;
     font-family: '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"';
     display: block;
@@ -7,7 +7,7 @@ body{
     line-height: 20px;
 }
 
-span{
+span {
     vertical-align: middle;
 }
 
