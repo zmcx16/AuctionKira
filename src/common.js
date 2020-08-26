@@ -11,7 +11,7 @@ var g_helper = (function () {
     if(!$("body").hasClass("ak-loadingBlock")){
       $('body').append(loadingHtml);
     }
-  }
+  };
 
   var enableLoadingAnimate = function() {
     $('.ak-loadingAnimation').show();

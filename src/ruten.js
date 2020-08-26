@@ -71,7 +71,7 @@ var ruten_helper = (function () {
         }
       }
     });
-  }
+  };
 
   var doAdvSearch = function (setting) {
 

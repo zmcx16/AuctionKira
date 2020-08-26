@@ -17,15 +17,15 @@ var myacg_helper = (function () {
 
   var init = function () {
     // &show=list&type=0&sort=1
-    let searchParams = new URLSearchParams(window.location.search)
+    let searchParams = new URLSearchParams(window.location.search);
     if (searchParams.has('show')){
-      show = searchParams.get('show')
+      show = searchParams.get('show');
     }
     if (searchParams.has('type')){
-      type = searchParams.get('type')
+      type = searchParams.get('type');
     }
     if (searchParams.has('sort')) {
-      sort = searchParams.get('sort')
+      sort = searchParams.get('sort');
     }
   }
 
@@ -55,7 +55,7 @@ var myacg_helper = (function () {
       keywords.seller = pop_setting['filter-seller'].split(';');
     }
 
-    $('#Goods_list_block').children().each((index, item)=> {
+    $('#Goods_list_block').children().each((index, item) => {
       let title_hidden = false;
       let seller_hidden = false;
       let title = show === 'image' ? item.children[1].innerText : item.children[1].children[0].innerText;

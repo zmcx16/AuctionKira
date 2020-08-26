@@ -57,8 +57,8 @@ function loadDomInStorMemory(){
 }
 
 function setStorInDom(){
-  $('#filter-title-input').val(storage_data['filter-title'])
-  $('#filter-seller-input').val(storage_data['filter-seller'])
+  $('#filter-title-input').val(storage_data['filter-title']);
+  $('#filter-seller-input').val(storage_data['filter-seller']);
 
   if (storage_data['filter-ads']) {
     $('#filter-ads').prop('checked', true);
