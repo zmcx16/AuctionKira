@@ -1,5 +1,7 @@
 # AuctionKira (拍賣網瀏覽器擴充套件)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0cb0422412e74987bca688f33d6c0ef8)](https://app.codacy.com/manual/zmcx16/AuctionKira?utm_source=github.com&utm_medium=referral&utm_content=zmcx16/AuctionKira&utm_campaign=Badge_Grade_Dashboard)
+
 # 功能
   * 關鍵字過濾功能
   * 賣家過濾功能
