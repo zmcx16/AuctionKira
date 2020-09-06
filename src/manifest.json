@@ -19,7 +19,7 @@
     "persistent": false
   },
   "permissions": [
-    "activeTab",
+    "tabs",
     "storage"
   ],
   "externally_connectable": {
